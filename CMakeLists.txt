@@ -108,11 +108,13 @@ set(FITNESSE_SERVER_JAR fitnesse-standalone-20130530.jar)
 #    SHOW_PROGRESS
 #)
 
+if(NOT(WIN32))
 # add a custom target for creating a symblic links for the FitNesseRoot folder...
 add_custom_target(SampleFixturesData ALL
     COMMAND ${CMAKE_COMMAND} -E create_symlink \"${CMAKE_CURRENT_SOURCE_DIR}/${FITNESSE_SERVER_JAR}\" \"${CMAKE_CURRENT_BINARY_DIR}/${FITNESSE_SERVER_JAR}\"
     COMMAND ${CMAKE_COMMAND} -E create_symlink \"${CMAKE_CURRENT_SOURCE_DIR}/SampleFixtures/FitNesseRoot\" \"${CMAKE_CURRENT_BINARY_DIR}/FitNesseRoot\"
 )
+endif(NOT(WIN32))
 
 add_test(
     NAME SampleFixturesTest_Call_from_FitNesse_Server
