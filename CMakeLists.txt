@@ -83,9 +83,14 @@ add_executable(
      ${HDR_fitnesse_cppslim}
 )
  
+if(UNIX)
+    set(ExtraLibraries pthread)
+endif(UNIX)
+
 target_link_libraries(
     SampleFixtures
-    ${Boost_LIBRARIES} pthread
+    ${Boost_LIBRARIES}
+    ${ExtraLibraries}
 )
 
 
